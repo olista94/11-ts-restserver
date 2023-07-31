@@ -3,7 +3,10 @@
     "-": "^0.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mysql2": "^3.5.2",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6"
   },
   "name": "11-ts-restserver",
   "description": "Aquí aprenderemos sobre los siguientes temas:",
