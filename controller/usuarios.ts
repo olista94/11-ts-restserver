@@ -88,13 +88,23 @@ export const putUsuario = async ( req: Request, res: Response ) => {
 
 }
 
-export const deleteUsuario = ( req: Request, res: Response ) => {
+export const deleteUsuario = async ( req: Request, res: Response ) => {
 
     const { id }   = req.params;
 
-    res.json( {
-        msg: 'deleteUsuario',
-        id
-    } )
+    const usuario = await Usuario.findByPk( id );
+    if ( !usuario ) {
+         return res.status( 404 ).json( {
+             msg: 'No existe un usurio con el id ' + id
+         } );
+    }
+
+    // Eliminacion fisica (Preferible no usar)
+    // await usuario.destroy();
+
+    // Eliminacion logica
+    await usuario.update( { estado: false } );
+
+    res.json( usuario );
 
 }
